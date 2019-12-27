@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Main Page</h2>
+<ul class="list-inline">
+    <li class="list-inline-item"><a asp-action="OrderBy" asp-route-id="1" class="btn-sm btn-secondary">OrderByTitle</a></li>
+    <li class="list-inline-item"><a asp-action="OrderBy" asp-route-id="2" class="btn-sm btn-secondary">OrderByName</a></li>
+    <li class="list-inline-item"><a asp-action="OrderBy" asp-route-id="3" class="btn-sm btn-secondary">OrderByDate</a></li>    
+</ul>
+
+<div id="partialContainer">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>AuthorName</th>
+                        <th>AuthorSurname</th>
+                        <th>Date</th>
+                        <th>Country</th>
+                        <th>Delete Action</th>
+                        <th>Update Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model)
+                    {
+                        <tr>
+                            <td id="modelId">@m.Id</td>
+                            <td>@m.Title</td>
+                            <td>@m.Name</td>
+                            <td>@m.Surname</td>
+                            <td>@m.Date</td>
+                            <td>@m.CountryName</td>
+                            <td><a asp-action="Delete" asp-route-id="@m.Id">Delete</a></td>
+                            <td><a asp-action="Update" asp-route-id="@m.Id">Update</a></td>                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

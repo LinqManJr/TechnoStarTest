@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AuthorResult>
+@{
+    ViewData["Title"] = "Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Auhtors View</h1>
+<div class="row" id="partialResult">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>                    
+                    <th>Country</th>
+                    <th>Delete Action</th>
+                    <th>Update Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td>@m.Id</td>                        
+                        <td>@m.Name</td>
+                        <td>@m.Surname</td>                        
+                        <td>@m.CountryName</td>
+                        <td><a asp-action="Delete" asp-route-id="@m.Id">Delete</a></td>
+                        <td><a asp-action="Update" asp-route-id="@m.Id">Update</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
